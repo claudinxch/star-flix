@@ -1,0 +1,63 @@
+header {
+    display: flex;
+    flex-direction: column;
+    background-color: #181818;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 60px;
+}
+
+.logo {
+    text-decoration: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #FFD700;
+    font-weight: 600;
+    text-shadow: 0 0 1px #FFD700, 0 0 2px #FFD700, 0 0 1px #FFD700, 0 0 5px #FFD700, 0 0 4px rgb(255, 196, 0), 0 0 2px #FFD700, 0 0 90px rgb(255, 196, 0);
+    letter-spacing: .1rem;
+}
+
+.favorites {
+    cursor: pointer;
+    background-color: #FFD700;
+    padding: 5px 15px;
+    color: #000000;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in;
+}
+
+.favorites:hover {
+    background-color: #fde140;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar a {
+    color: #FFF;
+    text-decoration: none;
+    width: 100%;
+    border: 1px solid #FFD700;
+    border-left: 0;
+    text-align: center;
+    padding: 3px;
+    transition: all 0.2s ease-in;
+}
+
+.navbar a:hover {
+    background-color: #ffd700f8;
+    color: #000000;
+}
+
+.navbar .active {
+    background-color: #FFD700F8;
+    color: #000000;
+}
