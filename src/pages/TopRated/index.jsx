@@ -1,40 +1,33 @@
 import { useState, useEffect } from "react";
 import { topRated } from "../../services/api";
-import Card from "../../components/Card/Card";
+import { MovieList } from "../../components/MovieList/movie-list";
 
-function TopRated(){
+function TopRated() {
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    const [movies, setMovies] = useState([])
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        async function loadTopRatedMovies() {
-            try{
-                const response = await topRated();
-                setMovies(response.results  ) //slice(0,10) when i change to pages of movies
-                setLoading(false)
-            } catch (err) {
-    
-            }
-        }
-
-        loadTopRatedMovies();
-    }, [])
-    console.log(movies)
-    
-    if(loading){
-        return(
-            <div className="loading">
-                <h2>Loading movies...</h2>
-            </div>
-        )
+  useEffect(() => {
+    async function loadTopRatedMovies() {
+      try {
+        const response = await topRated();
+        setMovies(response.results); //slice(0,10) when i change to pages of movies
+        setLoading(false);
+      } catch (err) {}
     }
 
-    return(
-        <div className="container">
-            {movies.map((movie) => <Card movie={movie} />)}
-        </div>
-    )
+    loadTopRatedMovies();
+  }, []);
+  console.log(movies);
+
+  if (loading) {
+    return (
+      <div className="loading">
+        <h2>Loading movies...</h2>
+      </div>
+    );
+  }
+
+  return <MovieList movies={movies} />;
 }
 
 export default TopRated;

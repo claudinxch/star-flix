@@ -1,0 +1,20 @@
+.container {
+    max-width: 100%;
+    padding: 20px 12px;
+    display: grid;
+    row-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    background-color: #eeeeee;
+    padding-bottom: 0;
+}
+
+.arrows {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    gap: 4px;
+}
