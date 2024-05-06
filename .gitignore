@@ -4,7 +4,6 @@
 /node_modules
 /.pnp
 .pnp.js
-/src/services
 
 # testing
 /coverage
@@ -25,3 +24,6 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+
+# API Archive
+/src/services/api.js
