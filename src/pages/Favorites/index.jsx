@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import "./favorites.css";
 import { toast } from "react-toastify";
-import { FavoriteMovieCard } from "../../components/FavoriteMovieCard/favorite-movie-card";
 import { FavoriteMovieList } from "../../components/FavoriteMoviesList/favorite-movie-list";
 
 function Favorites() {
