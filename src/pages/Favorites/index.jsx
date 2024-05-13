@@ -1,50 +1,37 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import './favorites.css';
-import { toast } from 'react-toastify'
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "./favorites.css";
+import { toast } from "react-toastify";
+import { FavoriteMovieCard } from "../../components/FavoriteMovieCard/favorite-movie-card";
+import { FavoriteMovieList } from "../../components/FavoriteMoviesList/favorite-movie-list";
 
 function Favorites() {
+  const [movies, setMovies] = useState([]);
 
-    const [movies, setMovies] = useState([]);
+  useEffect(() => {
+    const myList = localStorage.getItem("@starflix");
+    setMovies(JSON.parse(myList) || []);
+  }, []);
 
-    useEffect(() => {
+  const handleDelete = (id) => {
+    const filterMovies = movies.filter((movie) => {
+      return movie.id !== id;
+    });
 
-        const myList = localStorage.getItem('@starflix');
-        setMovies(JSON.parse(myList) || [])
+    setMovies(filterMovies);
+    localStorage.setItem("@starflix", JSON.stringify(filterMovies));
+    toast.success("Movie successfully removed!");
+  };
 
-    }, [])
+  return (
+    <div className="my-movies">
+      <h1>My Movies</h1>
 
-    const handleDelete = (id) => {
-        const filterMovies = movies.filter((movie) => {
-            return (movie.id !== id)
-        })
+      {movies.length === 0 && <span>You don't have any saved movie :( </span>}
 
-        setMovies(filterMovies);
-        localStorage.setItem('@starflix', JSON.stringify(filterMovies))
-        toast.success('Movie successfully removed!')
-    }
-
-    return(
-        <div className='my-movies'>
-            <h1>My Movies</h1>
-
-            {movies.length === 0 && <span>You don't have any saved movie :( </span>}
-
-            <ul>
-                {movies.map((movie) => {
-                    return(
-                        <li key={movie.id}>
-                            <span>{movie.original_title}</span>
-                            <div>
-                                <Link to={`/movie/${movie.id}`}>See details</Link>
-                                <button onClick={() => handleDelete(movie.id)}>Delete</button>
-                            </div>
-                        </li>
-                    )
-                })}
-            </ul>
-        </div>
-    )
+      <FavoriteMovieList movies={movies} onClick={handleDelete} />
+    </div>
+  );
 }
 
 export default Favorites;
