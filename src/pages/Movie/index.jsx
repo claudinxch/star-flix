@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { movieDetails } from "../../services/api";
 import { toast } from "react-toastify";
 import { MovieDetails } from "../../components/MovieDetails/movie-details";
+import { MovieDetailsSkeleton } from "../../components/Skeleton/movie-details-skeleton";
 
 function Movie() {
   const { id } = useParams();
@@ -48,38 +49,9 @@ function Movie() {
     toast.success("Movie successfully saved");
   };
 
-  if (loading) {
-    return (
-      <div className="movie-info">
-        <h1>Loading movie details</h1>
-      </div>
-    );
-  }
-  return (
-    // <div className="movie-info">
-    //   <h1>{movie.title}</h1>
-    //   <img
-    //     src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-    //     alt={movie.original_title}
-    //   />
-
-    //   <h3>Synopsis</h3>
-    //   <span>{movie.overview}</span>
-    //   <strong>Rating: {movie.vote_average.toFixed(1)} / 10</strong>
-
-    //   <div className="buttons-area">
-    //     <button onClick={saveMovie}>Save</button>
-    //     <button>
-    //       <a
-    //         href={`https://youtube.com/results?search_query=${movie.original_title} Trailer`}
-    //         target="blank"
-    //         rel="noreferrer"
-    //       >
-    //         Trailer
-    //       </a>
-    //     </button>
-    //   </div>
-    // </div>
+  return loading ? (
+    <MovieDetailsSkeleton />
+  ) : (
     <MovieDetails movie={movie} onClick={saveMovie} />
   );
 }

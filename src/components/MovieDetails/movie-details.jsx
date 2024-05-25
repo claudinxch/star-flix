@@ -16,7 +16,6 @@ export const MovieDetails = ({ movie, onClick }) => {
       <strong>Rating: {movie.vote_average.toFixed(1)} / 10</strong>
 
       <div className="buttons-area">
-        {/* <button onClick={onClick}>Save</button> */}
         <IconButton onClick={onClick}>Save</IconButton>
         <IconButton>
           <a
@@ -27,15 +26,6 @@ export const MovieDetails = ({ movie, onClick }) => {
             Trailer
           </a>
         </IconButton>
-        {/* <button>
-          <a
-            href={`https://youtube.com/results?search_query=${movie.original_title} Trailer`}
-            target="blank"
-            rel="noreferrer"
-          >
-            Trailer
-          </a>
-        </button> */}
       </div>
     </div>
   );

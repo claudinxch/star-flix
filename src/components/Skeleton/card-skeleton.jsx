@@ -1,5 +1,5 @@
 import React from "react";
-import "./card-skeleton.css";
+import "./styles/card-skeleton.css";
 
 const CardSkeleton = () => {
   return (
