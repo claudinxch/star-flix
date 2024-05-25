@@ -28,12 +28,11 @@
 }
 
 .buttons-area button {
+    background-color: rgba(0, 0, 0, 0.5);
     margin-right: 12px;
     margin-top: 14px;
     margin-left: 0;
     font-size: 20px;
-    border: none;
-    outline: none;
     padding: 12px;
     border-radius: 5px;
     cursor: pointer;
@@ -41,7 +40,7 @@
 }
 
 .buttons-area button:hover {
-    background-color: #116FEB;
+    background-color: rgba(50, 50, 50, 0.8);
     color: #FFF;
     scale: 1.05;
 }

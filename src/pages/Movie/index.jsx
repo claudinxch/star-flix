@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "./movies.css";
 import { movieDetails } from "../../services/api";
 import { toast } from "react-toastify";
+import { MovieDetails } from "../../components/MovieDetails/movie-details";
 
 function Movie() {
   const { id } = useParams();
@@ -56,30 +56,31 @@ function Movie() {
     );
   }
   return (
-    <div className="movie-info">
-      <h1>{movie.title}</h1>
-      <img
-        src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-        alt={movie.original_title}
-      />
+    // <div className="movie-info">
+    //   <h1>{movie.title}</h1>
+    //   <img
+    //     src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+    //     alt={movie.original_title}
+    //   />
 
-      <h3>Synopsis</h3>
-      <span>{movie.overview}</span>
-      <strong>Rating: {movie.vote_average.toFixed(1)} / 10</strong>
+    //   <h3>Synopsis</h3>
+    //   <span>{movie.overview}</span>
+    //   <strong>Rating: {movie.vote_average.toFixed(1)} / 10</strong>
 
-      <div className="buttons-area">
-        <button onClick={saveMovie}>Save</button>
-        <button>
-          <a
-            href={`https://youtube.com/results?search_query=${movie.original_title} Trailer`}
-            target="blank"
-            rel="noreferrer"
-          >
-            Trailer
-          </a>
-        </button>
-      </div>
-    </div>
+    //   <div className="buttons-area">
+    //     <button onClick={saveMovie}>Save</button>
+    //     <button>
+    //       <a
+    //         href={`https://youtube.com/results?search_query=${movie.original_title} Trailer`}
+    //         target="blank"
+    //         rel="noreferrer"
+    //       >
+    //         Trailer
+    //       </a>
+    //     </button>
+    //   </div>
+    // </div>
+    <MovieDetails movie={movie} onClick={saveMovie} />
   );
 }
 
