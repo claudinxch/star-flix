@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import Card from "../Card/Card";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import { IconButton } from "../IconButton/icon-button";
+import CardSkeleton from "../../components/Skeleton/card-skeleton";
 import "./movie-list.css";
 
-export function MovieList({ movies }) {
+export function MovieList({ movies, loading, showMovies }) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const goToPreviousPage = () => {
@@ -14,6 +15,16 @@ export function MovieList({ movies }) {
   const goToNextPage = () => {
     setCurrentPage(currentPage + 1);
   };
+
+  if (loading) {
+    return (
+      <div className="container">
+        {Array.from({ length: 10 }).map((_, index) => (
+          <CardSkeleton key={index} />
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className="container">

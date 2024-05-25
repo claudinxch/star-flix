@@ -19,14 +19,7 @@ function Home() {
     loadMovies();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="loading">
-        <h2>Loading movies...</h2>
-      </div>
-    );
-  }
-  return <MovieList movies={movies} />;
+  return <MovieList movies={movies} loading={loading} />;
 }
 
 export default Home;
